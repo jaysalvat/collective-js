@@ -1,0 +1,15 @@
+{
+    "name": "collective-js",
+    "version": "0.0.1-1",
+    "main": [
+        "dist/collective-js.js"
+    ],
+    "ignore": [
+        "src",
+        "test",
+        "gulpfile.js",
+        "package.json"
+    ],
+    "dependencies": {
+    }
+}
