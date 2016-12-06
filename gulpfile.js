@@ -26,7 +26,7 @@
         .argv;
 
     var settings = {
-        name: 'Collective',
+        name: 'collective',
         banner: {
             content: [
                 '/*!-----------------------------------------------------------------------------',
