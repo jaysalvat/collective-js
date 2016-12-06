@@ -1,4 +1,4 @@
-# collective-js
+# Collective JS
 
 [![Build Status](https://travis-ci.org/jaysalvat/collective-js.svg?branch=master)](https://travis-ci.org/jaysalvat/collective-js)
 [![NPM version](https://badge.fury.io/js/collective-js.svg)](http://badge.fury.io/js/collective-js)
@@ -7,22 +7,17 @@
 Manage Javascript Collections
 
 **Home:**
-[http://collective-js.jaysalvat.com/](http://collective-js.jaysalvat.com/)
+[http://collective.jaysalvat.com/](http://collective.jaysalvat.com/)
 
 **Documentation:**
-[http://collective-js.jaysalvat.com/documentation/](http://collective-js.jaysalvat.com/documentation/)
-
+[http://collective.jaysalvat.com/documentation/](http://collective.jaysalvat.com/documentation/)
 
 ## Install
 
-Download latest [collective-js! version](http://jaysalvat.github.io/collective-js/releases/latest/collective-js.zip) and include it to your page.
+Download latest [Collective version](http://jaysalvat.github.io/collective-js/releases/latest/collective.zip) and include it to your page.
 
 ```html
-<link rel="stylesheet" href="/path/to/collective-js/dist/collective-js.min.css">
-```
-
-```html
-<script src="/path/to/collective-js/dist/collective-js.min.js"></script>
+<script src="/path/to/collective/dist/collective.min.js"></script>
 ```
 
 ### Bower install
@@ -37,8 +32,8 @@ Download latest [collective-js! version](http://jaysalvat.github.io/collective-j
 
     yarn add collective-js
 
-collective-js is UMD and ES6/Webpack/Browserify friendly.
+Collective is UMD and ES6/Webpack/Browserify friendly.
 
 ```javascript
-import collective-js from 'collective-js';
+import collective from 'collective-js';
 ```
