@@ -1,4 +1,4 @@
-# collective-js
+# Collective JS
 
 Manage Javascript Collections
 

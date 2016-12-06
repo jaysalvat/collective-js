@@ -26,11 +26,11 @@
         .argv;
 
     var settings = {
-        name: 'collective-js',
+        name: 'Collective',
         banner: {
             content: [
                 '/*!-----------------------------------------------------------------------------',
-                ' * <%= pkg.name %> — <%= pkg.description %>',
+                ' * Collective JS — <%= pkg.description %>',
                 ' * v<%= pkg.version %> - built <%= datetime %>',
                 ' * Licensed under the MIT License.',
                 ' * http://<%= pkg.name %>.jaysalvat.com/',
@@ -91,14 +91,8 @@
             .pipe(plugins.mocha());
     });
 
-    gulp.task('es6', function () {
+    gulp.task('js', function () {
         return gulp.src("./src/**/*.js")
-            .pipe(plugins.if(argv.dev, plugins.sourcemaps.init()))
-            .pipe(plugins.babel({
-                presets: ['es2015-script'],
-                plugins: []
-            }).on('error', gutil.log))
-            .pipe(plugins.if(argv.dev, plugins.sourcemaps.write('maps')))
             .pipe(gulp.dest("./dist/"));
     });
 
@@ -113,27 +107,6 @@
                 outSourceMap: true,
                 preserveComments: 'license'
             }).on('error', gutil.log))
-            .pipe(plugins.rename({ suffix: '.min' }))
-            .pipe(plugins.sourcemaps.write('maps'))
-            .pipe(gulp.dest('./dist/'));
-    });
-
-    gulp.task('sass', function () {
-        return gulp.src("./src/sass/collective-js.sass")
-            .pipe(plugins.if(argv.dev, plugins.sourcemaps.init()))
-            .pipe(plugins.sass({
-                outputStyle: 'expanded',
-                indentWidth: 4
-            }).on('error', plugins.sass.logError))
-            .pipe(plugins.autoprefixer())
-            .pipe(plugins.if(argv.dev, plugins.sourcemaps.write('maps')))
-            .pipe(gulp.dest("./dist/"));
-    });
-
-    gulp.task('minify-css', function () {
-        return gulp.src('./dist/**/!(*.min.css).css')
-            .pipe(plugins.sourcemaps.init({ loadMaps: argv.dev }))
-            .pipe(plugins.cleanCss())
             .pipe(plugins.rename({ suffix: '.min' }))
             .pipe(plugins.sourcemaps.write('maps'))
             .pipe(gulp.dest('./dist/'));
@@ -167,7 +140,7 @@
             }
 
             var updates = [
-                '### collective-js ' + version + ' ' + date,
+                '### Collective Js ' + version + ' ' + date,
                 '',
                 '* ' + stdout.replace(/\n/g, '\n* ')
             ].join('\n');
@@ -330,7 +303,7 @@
 
     /** Main tasks **/
 
-    gulp.task('default', [ 'watch' ]);
+    gulp.task('default', [ 'build', 'watch' ]);
 
     gulp.task('watch', function() {
         argv.dev = true;
@@ -339,11 +312,10 @@
 
     gulp.task('build', sync([
         'clean',            // Remove /dist folder
-        'sass',             // Transpile SASS
-        'es6',              // Transpile ES6
+        'js',               // Copy js
         'header',           // Add Comment Headers
-        'minify-css',       // Minify CSS
         'minify-js',        // Minify JS
+        'test'
     ],
     'building'));
 
@@ -351,7 +323,7 @@
       [ 'fail-if-not-master', 'fail-if-dirty' ], // Dirty or not master?
         'git-pull',         // Pull repository
         'lint',             // Lint JS
-        'es6', 'minify-js', // JS transpilation/minification for unit tests
+        'js', 'minify-js',  // JS transpilation/minification for unit tests
         'test',             // Test before bumping
         'bump',             // Bump version
         'build',            // Second complete build with version bumped
