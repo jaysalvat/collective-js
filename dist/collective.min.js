@@ -1,6 +1,6 @@
 /*!-----------------------------------------------------------------------------
  * Collective JS — Manage Javascript Collections
- * v0.0.1-1 - built 2016-12-06
+ * v0.0.1 - built 2016-12-06
  * Licensed under the MIT License.
  * http://collective-js.jaysalvat.com/
  * ----------------------------------------------------------------------------
